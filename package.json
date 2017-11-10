@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "serve": "ng serve -p 5757",
-    "build": "ng build --prod"
+    "build": "ng build --prod && node build-sw"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +44,7 @@
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.3.2",
-    "typescript": "~2.3.3"
+    "typescript": "~2.3.3",
+    "workbox-build": "^2.1.1"
   }
 }
