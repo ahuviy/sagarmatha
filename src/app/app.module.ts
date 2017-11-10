@@ -10,6 +10,7 @@ import { OrdersPage } from './pages/orders/orders.page';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AreYouSureModal } from './modals/are-you-sure/are-you-sure.modal';
 import { AddClientModal } from './modals/add-client/add-client.modal';
+import { AddOrderModal } from './modals/add-order/add-order.modal';
 
 @NgModule({
     declarations: [
@@ -19,10 +20,12 @@ import { AddClientModal } from './modals/add-client/add-client.modal';
         NavbarComponent,
         AreYouSureModal,
         AddClientModal,
+        AddOrderModal,
     ],
     entryComponents: [
         AreYouSureModal,
         AddClientModal,
+        AddOrderModal,
     ],
     imports: [
         AppRouting,
@@ -32,7 +35,6 @@ import { AddClientModal } from './modals/add-client/add-client.modal';
         CoreModule,
         ModalModule.forRoot(),
     ],
-    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

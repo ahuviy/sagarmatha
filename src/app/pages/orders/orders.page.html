@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-90 col-xs-offset-5">
+            <h3 class="title" *ngIf="client">Orders for {{client.firstName}} {{client.lastName}}</h3>
+            <h3 class="title" *ngIf="!client">All Orders</h3>
+            <div class="orders-wrapper" *ngFor="let order of orders; trackBy: trackByOrderIds">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="btn-group" role="group">
+                            <button class="btn btn-default" (click)="edit($event, order)">
+                                Edit
+                            </button>
+                            <button #deleteBtn class="btn btn-danger" (click)="delete($event, order)">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <p class="order-description">{{order.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-primary" *ngIf="client" (click)="add($event)">Add Order</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<form [formGroup]="orderForm" (ngSubmit)="isEditMode ? editOrder() : addOrder()">
+    <div class="modal-header">
+        <h4 class="inline-block">{{args?.Order ? 'Edit Order' : 'Add Order'}}</h4>
+        <button type="button" class="close pull-right" (click)="close()">
+            <span>&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Description</label>
+            <textarea #firstInput class="form-control" rows="3" formControlName="description"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-success" [disabled]="orderForm.invalid">
+            {{args?.order ? 'Edit' : 'Add'}}
+        </button>
+        <button type="button" class="btn btn-danger" (click)="close()">Cancel</button>
+    </div>
+</form>

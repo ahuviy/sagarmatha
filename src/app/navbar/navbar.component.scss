@@ -26,5 +26,6 @@
     &.active {
         background-color: darkred;
         font-weight: 800;
+        pointer-events: none;
     }
 }

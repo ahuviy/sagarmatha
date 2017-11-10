@@ -36,7 +36,8 @@ export class ClientsPage {
 
     delete(event, client: Client) {
         event.target.blur();
-        this.modalService.show(AreYouSureModal, { client }).then(confirmed => {
+        const itemName = `${client.firstName} ${client.lastName}`;
+        this.modalService.show(AreYouSureModal, { itemName }).then(confirmed => {
             if (!confirmed) return;
             this.dataService.clients.delete(client.id).subscribe(clients => {
                 this.clients = clients;

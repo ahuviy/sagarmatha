@@ -15,6 +15,11 @@ export interface Order {
     description: string;
 }
 
+export interface OrderToAdd {
+    clientId: string;
+    description: string;
+}
+
 export interface Db {
     clients: Client[];
     orders: Order[];

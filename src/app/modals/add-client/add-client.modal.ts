@@ -30,7 +30,7 @@ export class AddClientModal {
         
             // We need to wait one tick of the VM so 'args' gets populated
             // and then we can know if we are in edit-mode.
-            setTimeout(this.initEditClientForm.bind(this));
+            this.initEditClientForm();
         });
     }
 
