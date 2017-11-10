@@ -1,6 +1,6 @@
 <form [formGroup]="orderForm" (ngSubmit)="isEditMode ? editOrder() : addOrder()">
     <div class="modal-header">
-        <h4 class="inline-block">{{args?.Order ? 'Edit Order' : 'Add Order'}}</h4>
+        <h4 class="inline-block">{{args?.order ? 'Edit Order' : 'Add Order'}}</h4>
         <button type="button" class="close pull-right" (click)="close()">
             <span>&times;</span>
         </button>
