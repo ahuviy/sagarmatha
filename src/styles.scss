@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'app/scss/common';
+
+// customized bootstrap
+@import 'app/scss/bootstrap-vars';
+@import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';

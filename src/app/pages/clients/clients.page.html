@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-90 col-xs-offset-5">
+            <h3 class="title">Our clients</h3>
+            <div class="client-wrapper" *ngFor="let client of clients">
+                <div class="client-name ellipsis-overflow">
+                    {{client.lastName}}, {{client.firstName}}
+                </div>
+                <button class="btn btn-default" (click)="edit(client)">Edit</button>
+                <button class="btn btn-danger" (click)="delete(client)">Delete</button>
+                <a class="btn btn-default" [routerLink]="'/orders/' + client.id">
+                    View orders
+                </a>
+            </div>
+            <button class="btn btn-primary" (click)="add()">Add client</button>
+        </div>
+    </div>
+</div>
