@@ -5,12 +5,26 @@
     height: 100%;
 }
 
+.banner {
+    font-size: 20px;
+    color: orange;
+    font-weight: 800;
+    margin-right: 20px;
+}
+
 .link {
     height: $navbar-height;
     line-height: $navbar-height;
     display: inline-block;
     vertical-align: middle;
-    margin: 0 20px;
+    padding: 0 15px;
+    margin: 0 5px;
     color: white;
     text-decoration: unset;
+    font-size: 16px;
+
+    &.active {
+        background-color: darkred;
+        font-weight: 800;
+    }
 }

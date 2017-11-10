@@ -4,6 +4,11 @@ export interface Client {
     lastName: string;
 }
 
+export interface ClientToAdd {
+    firstName: string;
+    lastName: string;
+}
+
 export interface Order {
     id: string;
     clientId: string;

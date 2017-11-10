@@ -1,0 +1,12 @@
+<div class="modal-header">
+    <h4 class="inline-block">
+        Are you sure you want to delete {{args?.client.firstName}} {{args?.client.lastName}}?
+    </h4>
+    <button type="button" class="close pull-right" (click)="close()">
+        <span>&times;</span>
+    </button>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" (click)="close(true)">Yes</button>
+    <button class="btn btn-default" (click)="close()">Cancel</button>
+</div>

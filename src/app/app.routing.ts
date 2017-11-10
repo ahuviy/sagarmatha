@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ClientsPage } from './pages/clients/clients.page';
-import { OrdersPage } from './pages/orders.page';
+import { OrdersPage } from './pages/orders/orders.page';
 
 const routes: Routes = [
     {
@@ -9,7 +9,7 @@ const routes: Routes = [
         component: ClientsPage
     },
     {
-        path: 'orders/:clientId',
+        path: 'orders',
         component: OrdersPage
     },
     {

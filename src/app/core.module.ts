@@ -1,6 +1,7 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { LocalStorageService } from './core/local-storage.service';
 import { DataService } from './core/data.service';
+import { ModalService } from './core/modal.service';
 
 @NgModule({
     imports: [],
@@ -9,6 +10,7 @@ import { DataService } from './core/data.service';
     providers: [
         LocalStorageService,
         DataService,
+        ModalService,
     ]
 })
 export class CoreModule {

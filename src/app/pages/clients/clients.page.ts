@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { DataService } from '../../core/data.service';
+import { ModalService } from '../../core/modal.service';
 import { Client } from '../../interfaces/data-model.interface';
+import { AreYouSureModal } from '../../modals/are-you-sure/are-you-sure.modal';
+import { AddClientModal } from '../../modals/add-client/add-client.modal';
 
 @Component({
     selector: 'clients-page',
@@ -10,27 +13,55 @@ import { Client } from '../../interfaces/data-model.interface';
 export class ClientsPage {
     clients: Client[];
 
-    constructor(private dataService: DataService) { }
+    constructor(
+        private dataService: DataService,
+        private modalService: ModalService
+    ) { }
 
     ngOnInit() {
-        this.clients = this.dataService.getClients().sort(this.sortByLastName);
+        this.dataService.clients.get().subscribe(clients => {
+            this.clients = clients.sort(this.sortByLastName);
+        });
     }
 
-    edit(client: Client) {
-        console.log('editing:', client);
+    edit(event, client: Client) {
+        event.target.blur();
+        this.modalService.show(AddClientModal, { client }).then(editedClient => {
+            if (!editedClient) return;
+            const clientToUpdate = this.clients.find(c => c.id === editedClient.id);
+            Object.assign(clientToUpdate, editedClient);
+            this.clients.sort(this.sortByLastName);
+        });
     }
 
-    delete(client: Client) {
-        console.log('deleting:', client);
+    delete(event, client: Client) {
+        event.target.blur();
+        this.modalService.show(AreYouSureModal, { client }).then(confirmed => {
+            if (!confirmed) return;
+            this.dataService.clients.delete(client.id).subscribe(clients => {
+                this.clients = clients;
+            });
+        });
     }
 
-    add() {
-        console.log('adding client');
+    add(event) {
+        event.target.blur();
+        this.modalService.show(AddClientModal).then(addedClient => {
+            if (!addedClient) return;
+            this.clients.push(addedClient);
+            this.clients.sort(this.sortByLastName);
+        });
+    }
+
+    trackByClientIds(index: number, client: Client) {
+        return client.id;
     }
 
     private sortByLastName(a: Client, b: Client) {
-        if (a.lastName > b.lastName) return 1;
-        else if (b.lastName > a.lastName) return -1;
+        const aLowercase = a.lastName.toLowerCase();
+        const bLowercase = b.lastName.toLowerCase();
+        if (aLowercase > bLowercase) return 1;
+        else if (bLowercase > aLowercase) return -1;
         else return 0;
     }
 }
