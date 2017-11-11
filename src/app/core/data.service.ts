@@ -23,6 +23,7 @@ export class DataService {
         delete: (clientId: string): Observable<Client[]> => {
             const db: Db = this.localStorageService.get('db') || this.getEmptyDb();
             db.clients = db.clients.filter(client => client.id !== clientId);
+            db.orders = db.orders.filter(o => o.clientId !== clientId);
             this.localStorageService.set('db', db);
             return of(db.clients);
         },
